@@ -47,8 +47,9 @@ class Nota:
     def inserir_mat(self, **kwargs):
 
         with self.con.cursor() as cursor:
-            sql = 'insert into tbmatricula(user,senha,nome) values(%s,%s,%s)'
-            cursor.execute(sql, (kwargs['sit'], kwargs['senha'], kwargs['nome'], kwargs['fk1'], kwargs['fk2']))
+            sql = 'insert into tbnotas(escolha,resposta,nota,fk_tbatividades_id,fk_tbmatricula_id,fk_tbmatricula_idcurso) values(%s,%s,%s,%s,%s,%s)'
+            cursor.execute(sql, (kwargs['escolha'], kwargs['resposta'], kwargs['nota'],kwargs['fk_tbatividades_id'],
+                                 kwargs['fk_tbmatricula_id'], kwargs['fk_tbmatricula_idcurso']))
 
             self.con.commit()
             cursor.close()
@@ -56,7 +57,7 @@ class Nota:
     def delete_mat(self, **kwargs):
 
         with self.con.cursor() as cursor:
-            sql = 'delete from tbmatricula where id = %s'
+            sql = 'delete from tbnotas where id = %s'
             print(kwargs)
             cursor.execute(sql, (kwargs['id']))
             self.con.commit()
@@ -65,7 +66,7 @@ class Nota:
     def update_mat(self, **kwargs):
 
         with self.con.cursor() as cursor:
-            sql = "update tbmatricula set {} = %s where id = %s".format(kwargs['coluna'])
+            sql = "update tbnotas set {} = %s where id = %s".format(kwargs['coluna'])
             cursor.execute(sql, (kwargs['valor'], kwargs['id']))
             self.con.commit()
             cursor.close()
