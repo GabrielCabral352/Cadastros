@@ -45,7 +45,7 @@ class Matricula:
     def inserir_mat(self, **kwargs):
 
         with self.con.cursor() as cursor:
-            sql = 'insert into tbmatricula(user,senha,nome) values(%s,%s,%s)'
+            sql = 'insert into tbmatricula(sitacao,andamento,dat, fk_tbcurso_id, fk_tbcliente_id) values(%s,%s,%s,%s,%s)'
             cursor.execute(sql, (kwargs['sit'], kwargs['senha'], kwargs['nome'], kwargs['fk1'], kwargs['fk2']))
 
             self.con.commit()
