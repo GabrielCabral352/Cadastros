@@ -61,9 +61,9 @@ while True:
     elif int(op) == 8:
         mat.menu_mat()
     elif int(op) == 9:
-        mod.menu_mod
+        mod.menu_mod()
     elif int(op) == 10:
-        nota.menu_nota
+        nota.menu_nota()
     elif int(op) == 0:
         exit()
     else:
