@@ -18,7 +18,11 @@ class Cliente:
         elif int(opt) == 2:
             self.inserir_cliente(nome=input('Nome:'),
                                  telefone=input('Telefone:'),
-                                 email=input('Email:'))
+                                 email=input('Email:'),
+                                 cpf=input('Email:'),
+                                 senha=input('Email:'),
+                                 autorizado=input('Email:'),
+                                 tipo=input('Email:'))
         elif int(opt) == 3:
             self.delete_cliente(id=input('ID:'))
         elif int(opt) == 4:
@@ -40,7 +44,7 @@ class Cliente:
     def inserir_cliente(self, **kwargs):
 
         with self.con.cursor() as cursor:
-            sql = 'insert into tbcliente(nome,telefone,email) values(%s,%s,%s)'
+            sql = 'insert into tbcliente(nome,telefone,email, cpf, senha, autorizado, tipo) values(%s,%s,%s)'
             cursor.execute(sql, (kwargs['nome'], kwargs['telefone'], kwargs['email']))
 
             self.con.commit()
